@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in transactions %}
+      <tr>
+          <td>{{ row["symbol"] }}</td>
+          <td>{{ row["shares"] }}</td>
+          <td>{{ row["price"] }}</td>
+          <td>{{ row["price"]*row["shares"] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+        <td></td>
+        <td></td>
+        <th>Total Amount</th>
+        <td>{{ result }}</td>
+    </tfoot>
+  </table>
+{% endblock %}
